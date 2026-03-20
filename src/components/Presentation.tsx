@@ -115,7 +115,7 @@ function SlideLabel({ label }: { label: string }) {
 
 export function Presentation() {
   const [current, setCurrent] = useState(0);
-  const [accusationTab, setAccusationTab] = useState<"prosecution" | "defense">("prosecution");
+
   const [verdict, setVerdict] = useState<"guilty" | "innocent" | null>(null);
 
   const total = SLIDE_ORDER.length;
@@ -123,7 +123,6 @@ export function Presentation() {
 
   const go = useCallback((dir: 1 | -1) => {
     setCurrent((c) => Math.max(0, Math.min(total - 1, c + dir)));
-    setAccusationTab("prosecution");
   }, [total]);
 
   useEffect(() => {
@@ -276,49 +275,52 @@ export function Presentation() {
 
         {/* ACCUSATION SLIDES */}
         {accusation && (
-          <div className="absolute inset-0 flex flex-col px-8 md:px-16 py-14 overflow-y-auto">
+          <div className="absolute inset-0 flex flex-col px-8 md:px-16 py-10 overflow-y-auto">
             <Corner />
-            <div className="max-w-5xl mx-auto w-full flex flex-col gap-6">
+            <div className="max-w-6xl mx-auto w-full flex flex-col gap-5">
+              {/* Header */}
               <div>
                 <SlideLabel label={`Обвинение ${accusation.id} из 4 · ${accusation.year}`} />
-                <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">{accusation.title}</h2>
+                <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-3">{accusation.title}</h2>
                 <div className="border-l-2 border-primary pl-4">
-                  <p className="text-muted-foreground italic leading-relaxed">{accusation.charge}</p>
+                  <p className="text-muted-foreground italic leading-relaxed text-sm">{accusation.charge}</p>
                 </div>
               </div>
 
-              {/* Tab switcher */}
-              <div className="flex gap-0 border border-border w-fit">
-                <button
-                  onClick={() => setAccusationTab("prosecution")}
-                  className={`px-6 py-2.5 text-sm tracking-wider uppercase font-medium transition-all border-r border-border ${accusationTab === "prosecution" ? "bg-destructive/20 text-destructive" : "text-muted-foreground hover:text-foreground"}`}
-                >
-                  Обвинение
-                </button>
-                <button
-                  onClick={() => setAccusationTab("defense")}
-                  className={`px-6 py-2.5 text-sm tracking-wider uppercase font-medium transition-all ${accusationTab === "defense" ? "bg-primary/20 text-primary" : "text-muted-foreground hover:text-foreground"}`}
-                >
-                  Защита
-                </button>
-              </div>
-
-              {/* Arguments */}
-              <div className="space-y-4">
-                {(accusationTab === "prosecution" ? accusation.prosecution : accusation.defense).map((arg, i) => (
-                  <div key={i} className="flex gap-4 bg-card border border-border p-5">
-                    <div className={`flex-shrink-0 mt-2 w-2 h-2 rotate-45 ${accusationTab === "prosecution" ? "bg-destructive" : "bg-primary"}`} />
-                    <div>
-                      <p className="text-foreground leading-relaxed mb-1">{arg.text}</p>
-                      <p className={`text-xs tracking-wider ${accusationTab === "prosecution" ? "text-destructive/70" : "text-primary/70"}`}>— {arg.source}</p>
-                    </div>
+              {/* Two columns */}
+              <div className="grid md:grid-cols-2 gap-4">
+                {/* Prosecution */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rotate-45 bg-destructive flex-shrink-0" />
+                    <p className="text-destructive text-xs tracking-[0.2em] uppercase font-medium">Обвинение</p>
                   </div>
-                ))}
+                  {accusation.prosecution.map((arg, i) => (
+                    <div key={i} className="bg-card border border-border border-l-2 border-l-destructive p-4">
+                      <p className="text-foreground text-sm leading-relaxed mb-1.5">{arg.text}</p>
+                      <p className="text-destructive/60 text-xs tracking-wide">— {arg.source}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Defense */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rotate-45 bg-primary flex-shrink-0" />
+                    <p className="text-primary text-xs tracking-[0.2em] uppercase font-medium">Защита</p>
+                  </div>
+                  {accusation.defense.map((arg, i) => (
+                    <div key={i} className="bg-card border border-border border-l-2 border-l-primary p-4">
+                      <p className="text-foreground text-sm leading-relaxed mb-1.5">{arg.text}</p>
+                      <p className="text-primary/60 text-xs tracking-wide">— {arg.source}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Verdict */}
-              <div className="bg-card border border-primary/30 p-5">
-                <p className="text-primary text-xs tracking-[0.2em] uppercase mb-2">Оценка историков</p>
+              <div className="bg-card border border-primary/30 p-4">
+                <p className="text-primary text-xs tracking-[0.2em] uppercase mb-1.5">Оценка историков</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">{accusation.verdict}</p>
               </div>
             </div>
@@ -428,7 +430,7 @@ export function Presentation() {
           {SLIDE_ORDER.map((id, i) => (
             <button
               key={id}
-              onClick={() => { setCurrent(i); setAccusationTab("prosecution"); }}
+              onClick={() => { setCurrent(i); }}
               className={`transition-all duration-300 rounded-full ${i === current ? "w-6 h-2 bg-primary" : "w-2 h-2 bg-border hover:bg-primary/50"}`}
             />
           ))}
