@@ -83,6 +83,7 @@ const accusations = [
 ];
 
 type SlideId =
+  | "passport"
   | "title"
   | "about"
   | "timeline"
@@ -93,7 +94,7 @@ type SlideId =
   | "verdict";
 
 const SLIDE_ORDER: SlideId[] = [
-  "title", "about", "timeline",
+  "passport", "title", "about", "timeline",
   "accusation-intro", "accusation-1", "accusation-2", "accusation-3", "accusation-4",
   "gallery", "quote", "verdict",
 ];
@@ -155,6 +156,49 @@ export function Presentation() {
 
       {/* ─── SLIDES ─── */}
       <div className="flex-1 overflow-hidden relative">
+
+        {/* PASSPORT */}
+        {slideId === "passport" && (
+          <div className="absolute inset-0 flex items-center justify-center px-8 md:px-20">
+            <Corner />
+            <div className="max-w-4xl w-full">
+              <SlideLabel label="Паспорт проекта" />
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-10 leading-tight">
+                Суд над <span className="text-gold-gradient">Иваном Грозным</span>
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
+                {[
+                  { label: "Тип работы", value: "Образовательная презентация" },
+                  { label: "Предмет", value: "История России" },
+                  { label: "Период", value: "XVI век · 1530–1584" },
+                  { label: "Форма", value: "Судебное заседание" },
+                  { label: "Цель", value: "Анализ исторических источников и вынесение обоснованного вердикта" },
+                  { label: "Дата", value: "2026 год" },
+                ].map((row) => (
+                  <div key={row.label} className="bg-background px-6 py-4 flex flex-col gap-1">
+                    <p className="text-primary text-xs tracking-[0.2em] uppercase">{row.label}</p>
+                    <p className="text-foreground font-serif text-lg leading-snug">{row.value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 border-t border-border pt-6 flex flex-wrap gap-6">
+                {[
+                  { num: "4", label: "обвинения" },
+                  { num: "11", label: "слайдов" },
+                  { num: "16", label: "исторических источников" },
+                  { num: "54", label: "года жизни царя" },
+                ].map((stat) => (
+                  <div key={stat.label} className="flex items-baseline gap-2">
+                    <span className="font-serif text-3xl text-primary">{stat.num}</span>
+                    <span className="text-muted-foreground text-sm tracking-wider uppercase">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* TITLE */}
         {slideId === "title" && (
