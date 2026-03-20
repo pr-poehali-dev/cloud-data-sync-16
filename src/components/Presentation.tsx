@@ -169,11 +169,13 @@ export function Presentation() {
 
               <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
                 {[
-                  { label: "Тип работы", value: "Образовательная презентация" },
+                  { label: "Автор проекта", value: "Ева Теплякова" },
+                  { label: "Класс", value: "7А1" },
+                  { label: "Классный руководитель", value: "Авилова Светлана Ивановна" },
                   { label: "Предмет", value: "История России" },
-                  { label: "Период", value: "XVI век · 1530–1584" },
+                  { label: "Тип работы", value: "Образовательная презентация" },
                   { label: "Форма", value: "Судебное заседание" },
-                  { label: "Цель", value: "Анализ исторических источников и вынесение обоснованного вердикта" },
+                  { label: "Период", value: "XVI век · 1530–1584" },
                   { label: "Дата", value: "2026 год" },
                 ].map((row) => (
                   <div key={row.label} className="bg-background px-6 py-4 flex flex-col gap-1">
