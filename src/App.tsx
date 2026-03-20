@@ -3,6 +3,10 @@ import { ArtDecoDivider } from "@/components/ArtDecoDivider";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTAForm } from "@/components/CTAForm";
 
+const IMG_PORTRAIT = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/4e0ef3d9-f996-41b3-b67f-5688a7fe49d9.jpg";
+const IMG_OPRICHNINA = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/0395c7c8-8344-4fc0-ba17-94f536374aa2.jpg";
+const IMG_COURT = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/57bdc5f7-9e78-462d-bdd3-594dece47d16.jpg";
+
 function App() {
   return (
     <main className="min-h-screen bg-background dark">
@@ -11,7 +15,6 @@ function App() {
         <ArtDecoSunburst />
 
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          {/* Decorative top element */}
           <div className="flex justify-center mb-8">
             <div className="flex items-center gap-4">
               <div className="w-16 h-px bg-primary" />
@@ -32,7 +35,6 @@ function App() {
             Образовательная интерактивная презентация. Обвинения, доказательства и защита — вынесите свой вердикт первому царю всея Руси.
           </p>
 
-          {/* Decorative bottom element */}
           <div className="flex justify-center">
             <div className="flex flex-col items-center gap-2">
               <div className="w-px h-16 bg-gradient-to-b from-transparent via-primary to-primary" />
@@ -41,16 +43,9 @@ function App() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-primary">
-            <path
-              d="M12 5v14M5 12l7 7 7-7"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
       </section>
@@ -66,14 +61,29 @@ function App() {
               <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6 leading-tight text-balance">
                 Где история встречает справедливость
               </h2>
+              <div className="space-y-6">
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  Иван IV Васильевич — один из самых противоречивых правителей в истории России. Реформатор и тиран, победитель Казанского ханства и создатель опричнины — его наследие до сих пор вызывает споры среди историков.
+                </p>
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  Этот учебный процесс предлагает взглянуть на его деяния через призму исторических источников: летописей, свидетельств современников и документов эпохи. Ваша задача — изучить доказательства и вынести обоснованный вердикт.
+                </p>
+              </div>
             </div>
-            <div className="space-y-6">
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                Иван IV Васильевич — один из самых противоречивых правителей в истории России. Реформатор и тиран, победитель Казанского ханства и создатель опричнины — его наследие до сих пор вызывает споры среди историков.
-              </p>
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                Этот учебный процесс предлагает взглянуть на его деяния через призму исторических источников: летописей, свидетельств современников и документов эпохи. Ваша задача — изучить доказательства и вынести обоснованный вердикт.
-              </p>
+            <div className="relative">
+              <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-primary z-10" />
+              <div className="absolute -top-3 -right-3 w-10 h-10 border-t-2 border-r-2 border-primary z-10" />
+              <div className="absolute -bottom-3 -left-3 w-10 h-10 border-b-2 border-l-2 border-primary z-10" />
+              <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-primary z-10" />
+              <img
+                src={IMG_PORTRAIT}
+                alt="Портрет Ивана Грозного"
+                className="w-full aspect-square object-cover"
+                style={{ filter: "sepia(20%) brightness(0.85)" }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/80 to-transparent py-4 px-6">
+                <p className="text-primary text-xs tracking-[0.2em] uppercase text-center">Иван IV Васильевич · 1530–1584</p>
+              </div>
             </div>
           </div>
         </div>
@@ -124,13 +134,58 @@ function App() {
         </div>
       </section>
 
-      {/* Testimonial Section */}
+      {/* Gallery Section */}
       <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <ArtDecoDivider variant="fan" />
 
+          <div className="text-center mb-16">
+            <p className="text-primary tracking-[0.2em] uppercase text-sm mb-4">Иллюстрации эпохи</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground text-balance">Образы XVI века</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="relative group">
+              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary z-10" />
+              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-primary z-10" />
+              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-primary z-10" />
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary z-10" />
+              <img
+                src={IMG_OPRICHNINA}
+                alt="Опричнина"
+                className="w-full aspect-video object-cover group-hover:brightness-90 transition-all duration-500"
+                style={{ filter: "sepia(15%) brightness(0.85)" }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-6">
+                <p className="font-serif text-lg text-foreground mb-1">Опричнина</p>
+                <p className="text-muted-foreground text-sm">Тайная полиция Ивана IV · 1565–1572</p>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary z-10" />
+              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-primary z-10" />
+              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-primary z-10" />
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary z-10" />
+              <img
+                src={IMG_COURT}
+                alt="Судебный свиток"
+                className="w-full aspect-video object-cover group-hover:brightness-90 transition-all duration-500"
+                style={{ filter: "sepia(15%) brightness(0.85)" }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-6">
+                <p className="font-serif text-lg text-foreground mb-1">Судебный процесс</p>
+                <p className="text-muted-foreground text-sm">Документы и летописи эпохи</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial Section */}
+      <section className="py-24 px-6 bg-card/50">
+        <div className="max-w-4xl mx-auto">
           <div className="relative text-center py-12">
-            {/* Quote decorations */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 text-primary/20 font-serif text-9xl leading-none">
               &ldquo;
             </div>
@@ -160,12 +215,11 @@ function App() {
             <p className="text-primary tracking-[0.2em] uppercase text-sm mb-4">Вынесите вердикт</p>
             <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6 text-balance">Виновен или оправдан?</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Изучили все материалы дела? Оставьте свой вердикт и обоснование — станьте частью исторической дискуссии.
+              Изучили все материалы дела? Оставьте свой вердикт — станьте частью исторической дискуссии.
             </p>
           </div>
 
           <div className="relative p-8 md:p-12 border border-border">
-            {/* Decorative frame corners */}
             <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary" />
             <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-primary" />
             <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-primary" />
