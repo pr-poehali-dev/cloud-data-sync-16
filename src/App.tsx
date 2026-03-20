@@ -3,6 +3,7 @@ import { ArtDecoDivider } from "@/components/ArtDecoDivider";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTAForm } from "@/components/CTAForm";
 import { Timeline } from "@/components/Timeline";
+import { AccusationSlides } from "@/components/AccusationSlides";
 
 const IMG_PORTRAIT = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/4e0ef3d9-f996-41b3-b67f-5688a7fe49d9.jpg";
 const IMG_OPRICHNINA = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/0395c7c8-8344-4fc0-ba17-94f536374aa2.jpg";
@@ -180,6 +181,20 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Accusation Slides Section */}
+      <section className="py-24 px-6 bg-card/50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-primary tracking-[0.2em] uppercase text-sm mb-4">Материалы дела</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground text-balance">Разбор обвинений</h2>
+            <p className="text-muted-foreground mt-4 text-lg max-w-xl mx-auto">
+              Четыре ключевых обвинения — аргументы прокуратуры, доводы защиты и оценка историков.
+            </p>
+          </div>
+          <AccusationSlides />
         </div>
       </section>
 
