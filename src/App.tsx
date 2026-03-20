@@ -2,6 +2,7 @@ import { ArtDecoSunburst } from "@/components/ArtDecoSunburst";
 import { ArtDecoDivider } from "@/components/ArtDecoDivider";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTAForm } from "@/components/CTAForm";
+import { Timeline } from "@/components/Timeline";
 
 const IMG_PORTRAIT = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/4e0ef3d9-f996-41b3-b67f-5688a7fe49d9.jpg";
 const IMG_OPRICHNINA = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/0395c7c8-8344-4fc0-ba17-94f536374aa2.jpg";
@@ -179,6 +180,21 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <ArtDecoDivider variant="stepped" />
+          <div className="text-center mb-16">
+            <p className="text-primary tracking-[0.2em] uppercase text-sm mb-4">Биография</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground text-balance">Хроника правления</h2>
+            <p className="text-muted-foreground mt-4 text-lg max-w-xl mx-auto">
+              54 года жизни, 37 лет у власти — ключевые события, которые формируют обвинение и защиту.
+            </p>
+          </div>
+          <Timeline />
         </div>
       </section>
 
