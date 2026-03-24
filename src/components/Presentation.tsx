@@ -231,6 +231,44 @@ export function Presentation() {
                 </p>
               </div>
 
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className="border border-border p-5">
+                  <p className="text-primary text-xs tracking-[0.2em] uppercase mb-4">Задачи проекта</p>
+                  <ul className="space-y-2">
+                    {[
+                      "Изучить биографию и эпоху Ивана Грозного",
+                      "Проанализировать исторические источники XVI века",
+                      "Рассмотреть четыре ключевых обвинения с позиций обвинения и защиты",
+                      "Сопоставить реформаторскую деятельность царя с его преступлениями",
+                      "Сформулировать обоснованный исторический вердикт",
+                    ].map((task) => (
+                      <li key={task} className="flex gap-2 text-sm text-foreground/80 leading-snug">
+                        <span className="text-primary mt-1">▸</span>
+                        <span>{task}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border border-border p-5">
+                  <p className="text-primary text-xs tracking-[0.2em] uppercase mb-4">Основные вопросы</p>
+                  <ul className="space-y-2">
+                    {[
+                      "Был ли Иван Грозный тираном или эффективным правителем?",
+                      "Можно ли оправдать опричнину историческими обстоятельствами?",
+                      "Как современники и потомки оценивали его правление?",
+                      "Соответствуют ли его методы целям, которые он преследовал?",
+                      "Каков итоговый исторический портрет царя?",
+                    ].map((q) => (
+                      <li key={q} className="flex gap-2 text-sm text-foreground/80 leading-snug">
+                        <span className="text-primary mt-1">?</span>
+                        <span>{q}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
               <div className="border-t border-border pt-6">
                 <p className="text-primary text-xs tracking-[0.2em] uppercase mb-4">Источники и литература</p>
                 <div className="space-y-3">
