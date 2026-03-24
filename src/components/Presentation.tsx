@@ -91,10 +91,11 @@ type SlideId =
   | "accusation-1" | "accusation-2" | "accusation-3" | "accusation-4"
   | "gallery"
   | "quote"
-  | "verdict";
+  | "verdict"
+  | "intro";
 
 const SLIDE_ORDER: SlideId[] = [
-  "passport", "title", "about", "timeline",
+  "passport", "intro", "title", "about", "timeline",
   "accusation-intro", "accusation-1", "accusation-2", "accusation-3", "accusation-4",
   "gallery", "quote", "verdict",
 ];
@@ -197,6 +198,111 @@ export function Presentation() {
                     <span className="text-muted-foreground text-sm tracking-wider uppercase">{stat.label}</span>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* INTRO */}
+        {slideId === "intro" && (
+          <div className="absolute inset-0 overflow-y-auto px-8 md:px-20 py-10">
+            <Corner />
+            <div className="max-w-4xl mx-auto">
+              <SlideLabel label="Введение" />
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-6 leading-tight">
+                О проекте: <span className="text-gold-gradient">суд над Иваном Грозным</span>
+              </h2>
+
+              <div className="space-y-4 text-foreground/85 leading-relaxed mb-8">
+                <p>
+                  Иван IV Васильевич — один из самых противоречивых правителей в истории России. Его называли
+                  «Грозным» ещё при жизни: он объединял земли, строил государство, побеждал врагов — и в то же время
+                  учредил опричнину, казнил тысячи людей и разрушил собственную страну изнутри.
+                </p>
+                <p>
+                  Цель этого проекта — провести <strong className="text-foreground">историческое судебное заседание</strong>:
+                  объективно изучить свидетельства эпохи, выслушать обвинение и защиту по четырём ключевым обвинениям
+                  и вынести обоснованный вердикт. Не оправдать и не осудить заранее — а разобраться.
+                </p>
+                <p>
+                  Проект опирается на подлинные исторические источники: летописи, иностранные свидетельства,
+                  документы эпохи и труды ведущих историков.
+                </p>
+              </div>
+
+              <div className="border-t border-border pt-6">
+                <p className="text-primary text-xs tracking-[0.2em] uppercase mb-4">Источники и литература</p>
+                <div className="space-y-3">
+                  {[
+                    {
+                      num: "1",
+                      text: "Карамзин Н. М. «История государства Российского». Т. VIII–IX. — М.: Наука, 1989.",
+                      url: null,
+                    },
+                    {
+                      num: "2",
+                      text: "Скрынников Р. Г. «Иван Грозный». — М.: АСТ, 2001.",
+                      url: null,
+                    },
+                    {
+                      num: "3",
+                      text: "Флетчер Д. «О государстве Русском» (1591). Пер. с англ. — СПб., 1906.",
+                      url: null,
+                    },
+                    {
+                      num: "4",
+                      text: "Курбский А. М. «История о великом князе Московском» (XVI в.).",
+                      url: null,
+                    },
+                    {
+                      num: "5",
+                      text: "Зимин А. А. «Опричнина Ивана Грозного». — М.: Мысль, 1964.",
+                      url: null,
+                    },
+                    {
+                      num: "6",
+                      text: "Переписка Ивана Грозного с Андреем Курбским / под ред. Д. С. Лихачёва. — Л.: Наука, 1979.",
+                      url: null,
+                    },
+                    {
+                      num: "7",
+                      text: "Синодик опальных Ивана Грозного (список казнённых). РНБ, XVI в.",
+                      url: null,
+                    },
+                    {
+                      num: "8",
+                      text: "Энциклопедия Кольера. Статья «Иван IV». — Britannica / Колье, 2001.",
+                      url: "https://www.britannica.com/biography/Ivan-the-Terrible",
+                    },
+                    {
+                      num: "9",
+                      text: "Российская историческая энциклопедия. Статья «Иван Грозный». РАН, 2015.",
+                      url: "https://runivers.ru",
+                    },
+                    {
+                      num: "10",
+                      text: "Государственный исторический музей (ГИМ). Коллекция «Россия XVI века».",
+                      url: "https://shm.ru",
+                    },
+                  ].map((src) => (
+                    <div key={src.num} className="flex gap-3 items-start">
+                      <span className="font-serif text-primary text-sm min-w-[1.5rem] pt-0.5">{src.num}.</span>
+                      <p className="text-foreground/75 text-sm leading-snug">
+                        {src.text}{" "}
+                        {src.url && (
+                          <a
+                            href={src.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary underline underline-offset-2 hover:text-primary/80 break-all"
+                          >
+                            {src.url}
+                          </a>
+                        )}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
