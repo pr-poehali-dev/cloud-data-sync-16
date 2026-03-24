@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ArtDecoSunburst } from "@/components/ArtDecoSunburst";
+import { generateDocx } from "@/utils/generateDocx";
 
 const IMG_PORTRAIT = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/4e0ef3d9-f996-41b3-b67f-5688a7fe49d9.jpg";
 const IMG_OPRICHNINA = "https://cdn.poehali.dev/projects/ff7608fd-3505-400d-8927-3a4a9685a33a/files/0395c7c8-8344-4fc0-ba17-94f536374aa2.jpg";
@@ -675,6 +676,18 @@ export function Presentation() {
         <div className="flex items-center gap-2 md:hidden text-muted-foreground text-xs tracking-widest">
           {current + 1} / {total}
         </div>
+
+        {/* Download */}
+        <button
+          onClick={generateDocx}
+          title="Скачать как Word"
+          className="hidden md:flex h-10 px-4 border border-border items-center gap-2 text-muted-foreground hover:text-primary hover:border-primary transition-all text-xs tracking-wider uppercase"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 flex-shrink-0">
+            <path d="M12 15V3m0 12-4-4m4 4 4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Скачать Word
+        </button>
 
         {/* Arrows */}
         <div className="flex gap-3">
