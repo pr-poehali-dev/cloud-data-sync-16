@@ -92,10 +92,11 @@ type SlideId =
   | "gallery"
   | "quote"
   | "verdict"
-  | "intro";
+  | "intro"
+  | "contents";
 
 const SLIDE_ORDER: SlideId[] = [
-  "passport", "intro", "title", "about", "timeline",
+  "passport", "intro", "contents", "title", "about", "timeline",
   "accusation-intro", "accusation-1", "accusation-2", "accusation-3", "accusation-4",
   "gallery", "quote", "verdict",
 ];
@@ -303,6 +304,51 @@ export function Presentation() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* CONTENTS */}
+        {slideId === "contents" && (
+          <div className="absolute inset-0 flex items-center justify-center px-8 md:px-20">
+            <Corner />
+            <div className="max-w-3xl w-full">
+              <SlideLabel label="Содержание" />
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8 leading-tight">
+                План <span className="text-gold-gradient">презентации</span>
+              </h2>
+
+              <div className="space-y-1">
+                {[
+                  { num: "I", title: "Паспорт проекта", sub: "Автор, класс, руководитель" },
+                  { num: "II", title: "Введение", sub: "Описание проекта и источники" },
+                  { num: "III", title: "Иван Грозный: кто он?", sub: "Личность и эпоха" },
+                  { num: "IV", title: "Хронология правления", sub: "Ключевые события 1530–1584" },
+                  { num: "V", title: "Обвинения", sub: "4 дела на судебном заседании" },
+                  { num: "—", title: "Опричнина и террор", sub: "Обвинение №1", indent: true },
+                  { num: "—", title: "Новгородский погром", sub: "Обвинение №2", indent: true },
+                  { num: "—", title: "Убийство сына", sub: "Обвинение №3", indent: true },
+                  { num: "—", title: "Разорение страны", sub: "Обвинение №4", indent: true },
+                  { num: "VI", title: "Галерея эпохи", sub: "Исторические образы" },
+                  { num: "VII", title: "Слово истории", sub: "Цитаты современников" },
+                  { num: "VIII", title: "Вердикт", sub: "Итоговая оценка" },
+                ].map((item) => (
+                  <div
+                    key={item.num + item.title}
+                    className={`flex items-center gap-4 py-2.5 border-b border-border/50 ${item.indent ? "pl-8" : ""}`}
+                  >
+                    <span className={`font-serif min-w-[2rem] text-right ${item.indent ? "text-muted-foreground text-sm" : "text-primary text-lg"}`}>
+                      {item.num}
+                    </span>
+                    <div className="flex-1 flex items-baseline gap-3">
+                      <span className={`font-serif ${item.indent ? "text-foreground/70 text-sm" : "text-foreground text-base"}`}>
+                        {item.title}
+                      </span>
+                      <span className="text-muted-foreground text-xs">— {item.sub}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
